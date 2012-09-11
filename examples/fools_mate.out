@@ -8,17 +8,17 @@ Beginning a game of two-player chess. Type 'help' for more information.
 
 8   r  n  b  q  k  b  n  r   8
 7   p  p  p  p  p  p  p  p   7
-6                            6
-5                            5
-4                            4
-3                            3
+6   □  □  □  □  □  □  □  □   6
+5   □  □  □  □  □  □  □  □   5
+4   □  □  □  □  □  □  □  □   4
+3   □  □  □  □  □  □  □  □   3
 2   P  P  P  P  P  P  P  P   2
 1   R  N  B  Q  K  B  N  R   1
 
     a  b  c  d  e  f  g  h 
 
 [[33mnotice[0m] White's move.
-> f[3G[Khelp
+> help
 Play chess by typing a command at the prompt.
 
 Navigate the board by using the alphanumeric coordinates.
@@ -39,10 +39,10 @@ NOTE: Since players will primarily be moving pieces, typing 'm' or 'move' before
 
 8   r  n  b  q  k  b  n  r   8
 7   p  p  p  p  p  p  p  p   7
-6                            6
-5                            5
-4                            4
-3                            3
+6   □  □  □  □  □  □  □  □   6
+5   □  □  □  □  □  □  □  □   5
+4   □  □  □  □  □  □  □  □   4
+3   □  □  □  □  □  □  □  □   3
 2   P  P  P  P  P  P  P  P   2
 1   R  N  B  Q  K  B  N  R   1
 
@@ -55,11 +55,11 @@ NOTE: Since players will primarily be moving pieces, typing 'm' or 'move' before
 
 8   r  n  b  q  k  b  n  r   8
 7   p  p  p  p  p  p  p  p   7
-6                            6
-5                            5
-4                            4
-3                  P         3
-2   P  P  P  P  P     P  P   2
+6   □  □  □  □  □  □  □  □   6
+5   □  □  □  □  □  □  □  □   5
+4   □  □  □  □  □  □  □  □   4
+3   □  □  □  □  □  P  □  □   3
+2   P  P  P  P  P  □  P  P   2
 1   R  N  B  Q  K  B  N  R   1
 
     a  b  c  d  e  f  g  h 
@@ -70,12 +70,12 @@ NOTE: Since players will primarily be moving pieces, typing 'm' or 'move' before
     a  b  c  d  e  f  g  h 
 
 8   r  n  b  q  k  b  n  r   8
-7   p  p  p  p     p  p  p   7
-6                            6
-5               p            5
-4                            4
-3                  P         3
-2   P  P  P  P  P     P  P   2
+7   p  p  p  p  □  p  p  p   7
+6   □  □  □  □  □  □  □  □   6
+5   □  □  □  □  p  □  □  □   5
+4   □  □  □  □  □  □  □  □   4
+3   □  □  □  □  □  P  □  □   3
+2   P  P  P  P  P  □  P  P   2
 1   R  N  B  Q  K  B  N  R   1
 
     a  b  c  d  e  f  g  h 
@@ -86,12 +86,12 @@ NOTE: Since players will primarily be moving pieces, typing 'm' or 'move' before
     a  b  c  d  e  f  g  h 
 
 8   r  n  b  q  k  b  n  r   8
-7   p  p  p  p     p  p  p   7
-6                            6
-5               p            5
-4                     P      4
-3                  P         3
-2   P  P  P  P  P        P   2
+7   p  p  p  p  □  p  p  p   7
+6   □  □  □  □  □  □  □  □   6
+5   □  □  □  □  p  □  □  □   5
+4   □  □  □  □  □  □  P  □   4
+3   □  □  □  □  □  P  □  □   3
+2   P  P  P  P  P  □  □  P   2
 1   R  N  B  Q  K  B  N  R   1
 
     a  b  c  d  e  f  g  h 
@@ -102,17 +102,17 @@ NOTE: Since players will primarily be moving pieces, typing 'm' or 'move' before
 
     a  b  c  d  e  f  g  h 
 
-8   r  n  b     k  b  n  r   8
-7   p  p  p  p     p  p  p   7
-6                            6
-5               p            5
-4                     P  q   4
-3                  P         3
-2   P  P  P  P  P        P   2
+8   r  n  b  □  k  b  n  r   8
+7   p  p  p  p  □  p  p  p   7
+6   □  □  □  □  □  □  □  □   6
+5   □  □  □  □  p  □  □  □   5
+4   □  □  □  □  □  □  P  q   4
+3   □  □  □  □  □  P  □  □   3
+2   P  P  P  P  P  □  □  P   2
 1   R  N  B  Q  K  B  N  R   1
 
     a  b  c  d  e  f  g  h 
 
 [[32msuccess[0m] Checkmate. Black wins.
-[0m[[32msuccess[0m] [0mTotal time: 51 s, completed Sep 11, 2012 11:41:22 AM[0m
+[0m[[32msuccess[0m] [0mTotal time: 74 s, completed Sep 11, 2012 1:19:01 PM[0m
 > exit

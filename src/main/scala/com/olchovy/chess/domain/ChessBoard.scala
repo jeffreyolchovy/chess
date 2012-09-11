@@ -122,7 +122,7 @@ case class ChessBoard(override val state: Seq[Option[Piece]], turn: Int = 0) ext
 
   def prettyPrint {
     def indent(n: Int) = " " * n
-    val colHeaders = Stream.from('a').take(8).map(i => " %c ".format(i.toChar)).mkString("")
+    val colHeaders = Stream.from('a').take(numCols).map(i => " %c ".format(i.toChar)).mkString("")
 
     // print top column address headers
     println("\n" + indent(3) + colHeaders + "\n")
@@ -135,7 +135,7 @@ case class ChessBoard(override val state: Seq[Option[Piece]], turn: Int = 0) ext
         if(col == 'a') print("%d%s".format(row, indent(2)))
         
         // print value of state at address (col, row)
-        print(apply(col, row).map(p => " %s ".format(p.toString)).getOrElse("   "))
+        print(apply(col, row).map(p => " %s ".format(p.toString)).getOrElse(" □ "))
 
         // print right row address headers
         if(col == 'h') print("%s%d".format(indent(2), row))
