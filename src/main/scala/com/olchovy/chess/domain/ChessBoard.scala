@@ -113,6 +113,8 @@ case class ChessBoard(override val state: Seq[Option[Piece]], turn: Int = 0) ext
 
         if(testInCheck && isInCheck && newBoard.isInCheck)
           Left(MoveFailure(attempt, "Attempted move did not escape check"))
+        else if(testInCheck && newBoard.isInCheck)
+          Left(MoveFailure(attempt, "Attempted move voluntarily places player in check"))
         else
           Right(newBoard.copy(turn = turn + 1))
     }

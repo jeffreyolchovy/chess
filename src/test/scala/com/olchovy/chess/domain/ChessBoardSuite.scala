@@ -47,18 +47,28 @@ class ChessBoardSuite extends FunSuite
     assert(board.isInCheck)
 
     val evasion = board.move(from = ('d', 5), to = ('d', 4))
-
     assert(evasion.isRight)
     assert(evasion.right.exists(!_.isInCheck))
 
     val mistake = board.move(from = ('d', 5), to = ('c', 5))
-
     assert(mistake.isLeft)
   }
 
   test("two kings in initial positions") {
     val board = ChessBoard(('e', 8) -> King(black), ('e', 1) -> King(white))
     assert(!board.isInCheck)
+  }
+
+  test("king can not move into check") {
+    val board = ChessBoard(('e', 6) -> King(white), ('d', 6) -> Bishop(black), ('d', 4) -> Queen(black))
+    val result = board.move(from = ('e', 6), to = ('e', 5))
+    assert(result.isLeft)
+  }
+
+  test("suicidal kings") {
+    val board = ChessBoard(('e', 5) -> King(white), ('c', 5) -> King(black))
+    val result = board.move(from = ('e', 5), to = ('d', 5))
+    assert(result.isLeft)
   }
 
   /* the remaining tests emply the following flow of movement:
@@ -71,11 +81,9 @@ class ChessBoardSuite extends FunSuite
   test("first checkmate with king and queen") {
     val board = ChessBoard(('d', 8) -> King(black), ('d', 5) -> Queen(white), ('e', 6) -> King(white))
     val result = board.move(from = ('d', 5), to = ('d', 7)) 
-
     assert(result.isRight)
     
     val Right(nextBoard) = result
-
     assert(nextBoard.isInCheck)
     assert(nextBoard.isInCheckmate)
   }
@@ -83,11 +91,9 @@ class ChessBoardSuite extends FunSuite
   test("second checkmate with king and queen") {
     val board = ChessBoard(('d', 8) -> King(black), ('a', 1) -> Queen(white), ('d', 6) -> King(white))
     val result = board.move(from = ('a', 1), to = ('a', 8)) 
-
     assert(result.isRight)
     
     val Right(nextBoard) = result
-
     assert(nextBoard.isInCheck)
     assert(nextBoard.isInCheckmate)
   }
@@ -101,11 +107,9 @@ class ChessBoardSuite extends FunSuite
     )
 
     val result = board.move(from = ('d', 3), to = ('e', 4))
-
     assert(result.isRight)
 
     val Right(nextBoard) = result
-
     assert(nextBoard.isInCheck)
     assert(nextBoard.isInCheckmate)
   }
@@ -119,11 +123,9 @@ class ChessBoardSuite extends FunSuite
     )
 
     val result = board.move(from = ('c', 6), to = ('b', 6))
-
     assert(result.isRight)
 
     val Right(nextBoard) = result
-
     assert(nextBoard.isInCheck)
     assert(!nextBoard.isInCheckmate)
   }
