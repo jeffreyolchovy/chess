@@ -21,13 +21,18 @@ object Application
 
   @annotation.tailrec
   def run(board: ChessBoard): Unit = {
+    // print the board to the console
     board.prettyPrint
 
+    // test for endgame
     // the quickest possible checkmate can be achieved in two "moves" (where two of our turns makes one move)
-    if(board.turn > 3 && board.isInCheckmate) {
+    if(board.turn >= 4 && board.isInCheckmate) {
       SuccessMessage("Checkmate. %s wins.".format(board.opponentName.capitalize)).prettyPrint
       Quit.execute(board)
-    } else {
+    }
+
+    // the game continues, prompt player for input
+    else {
       NoticeMessage("%s's move.".format(board.playerName.capitalize)).prettyPrint
     }
 
