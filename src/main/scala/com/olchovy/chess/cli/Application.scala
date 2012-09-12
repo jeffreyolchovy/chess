@@ -149,9 +149,16 @@ object Application
       case command ~ _ => command
     }
 
-    def apply(input: String): Either[Throwable, Command] = parse(command, input) match {
-      case (e: NoSuccess) => Left(new RuntimeException("Syntax error. Type 'help' for usage."))
-      case Success(command, _) => Right(command)
+    def apply(input: String): Either[Throwable, Command] = try {
+      parse(command, input) match {
+        case (e: NoSuccess) => Left(new RuntimeException("Syntax error. Type 'help' for usage."))
+        case Success(command, _) => Right(command)
+      }
+    } catch {
+      case (e: NullPointerException) => Left(new RuntimeException("Enter a command. Type 'help' for usage."))
+      case e =>
+        ErrorMessage("Program encountered an unexpected error: %s. Terminating.".format(e.getMessage)).prettyPrint
+        Right(Quit)
     }
   }
 
