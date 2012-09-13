@@ -31,10 +31,12 @@ object Application
       Quit.execute(board)
     }
 
-    // the game continues, prompt player for input
-    else {
-      NoticeMessage("%s's move.".format(board.playerName.capitalize)).prettyPrint
+    if(board.isInCheck) { 
+      NoticeMessage("%s is in check.".format(board.playerName.capitalize)).prettyPrint
     }
+
+    // prompt player for input
+    NoticeMessage("%s's move.".format(board.playerName.capitalize)).prettyPrint
 
     // parse command line input with command dsl 
     inputParser(inputReader.readLine(prompt)) match {
@@ -73,11 +75,7 @@ object Application
         ErrorMessage(e.getMessage).prettyPrint
         board
 
-      case Right(newBoard) =>
-        if(newBoard.isInCheck)
-          NoticeMessage("%s is in check.".format(newBoard.playerName.capitalize)).prettyPrint
-
-        newBoard
+      case Right(newBoard) => newBoard
     }
   }
 
