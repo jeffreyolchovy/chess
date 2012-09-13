@@ -6,22 +6,13 @@ class RookSuite extends FunSuite
 {
   import Piece.Color._
 
-  val piece = Rook(white)
+  val whiteRook = Rook(white)
 
-  val whiteObstacle = Pawn(white)
+  val whitePawn = Pawn(white)
 
-  val blackObstacle = Pawn(black)
+  val blackPawn = Pawn(black)
 
-  // R @ d5, P @ b5, p @ g5
-  val board = new ChessBoard(
-    Seq.fill(25)(None) ++
-    Seq(Some(whiteObstacle)) ++
-    Seq.fill(1)(None) ++
-    Seq(Some(piece)) ++
-    Seq.fill(2)(None) ++
-    Seq(Some(blackObstacle)) ++
-    Seq.fill(33)(None)
-  )
+  val board = ChessBoard(('d', 5) -> whiteRook, ('b', 5) -> whitePawn, ('g', 5) -> blackPawn)
 
   test("move up") {
     assert(board.move(from = ('d', 5), to = ('d', 8)).isRight)
@@ -48,4 +39,3 @@ class RookSuite extends FunSuite
     assert(board.move(from = ('d', 5), to = ('b', 2)).isLeft)
   }
 }
-

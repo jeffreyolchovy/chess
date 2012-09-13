@@ -12,7 +12,7 @@ class CommandDSLSuite extends FunSuite
     assert(CommandDSL("h garbage").isLeft)
   }
 
-  test("move (and syntax sugar)") {
+  test("move (with keyword and keyword-less syntax sugar)") {
     assert(CommandDSL("m").isLeft)
     assert(CommandDSL("move").isLeft)
 

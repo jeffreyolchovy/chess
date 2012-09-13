@@ -4,10 +4,9 @@ import org.scalatest.FunSuite
 
 class KingSuite extends FunSuite
 {
-  val piece = King(Piece.Color.white)
+  import Piece.Color._
 
-  // K @ d5
-  val board = new ChessBoard(Seq.fill(27)(None) ++ Seq(Some(piece)) ++ Seq.fill(36)(None))
+  val board = ChessBoard(('d', 5) -> King(white))
 
   test("move up (1)") {
     assert(board.move(from = ('d', 5), to = ('d', 6)).isRight)
@@ -25,4 +24,3 @@ class KingSuite extends FunSuite
     assert(board.move(from = ('d', 5), to = ('a', 5)).isLeft)
   }
 }
-

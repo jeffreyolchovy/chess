@@ -6,22 +6,13 @@ class BishopSuite extends FunSuite
 {
   import Piece.Color._
 
-  val piece = Bishop(white)
+  val whiteBishop = Bishop(white)
 
-  val whiteObstacle = Pawn(white)
+  val whitePawn = Pawn(white)
 
-  val blackObstacle = Pawn(black)
+  val blackPawn = Pawn(black)
 
-  // B @ d5, P @ g2, p @ b7
-  val board = new ChessBoard(
-    Seq.fill(9)(None) ++
-    Seq(Some(blackObstacle)) ++
-    Seq.fill(17)(None) ++
-    Seq(Some(piece)) ++
-    Seq.fill(26)(None) ++
-    Seq(Some(whiteObstacle)) ++
-    Seq.fill(9)(None)
-  )
+  val board = ChessBoard(('d', 5) -> whiteBishop, ('g', 2) -> whitePawn, ('b', 7) -> blackPawn)
 
   test("move up") {
     assert(board.move(from = ('d', 5), to = ('d', 8)).isLeft)

@@ -6,22 +6,13 @@ class QueenSuite extends FunSuite
 {
   import Piece.Color._
 
-  val piece = Queen(white)
+  val whiteQueen = Queen(white)
 
-  val whiteObstacle = Pawn(white)
+  val whitePawn = Pawn(white)
 
-  val blackObstacle = Pawn(black)
+  val blackPawn = Pawn(black)
 
-  // Q @ d5, P @ g2, p @ b5
-  val board = new ChessBoard(
-    Seq.fill(25)(None) ++
-    Seq(Some(blackObstacle)) ++
-    Seq.fill(1)(None) ++
-    Seq(Some(piece)) ++
-    Seq.fill(26)(None) ++
-    Seq(Some(whiteObstacle)) ++
-    Seq.fill(9)(None)
-  )
+  val board = ChessBoard(('d', 5) -> whiteQueen, ('g', 2) -> whitePawn, ('b', 5) -> blackPawn)
 
   test("move up") {
     assert(board.move(from = ('d', 5), to = ('d', 8)).isRight)

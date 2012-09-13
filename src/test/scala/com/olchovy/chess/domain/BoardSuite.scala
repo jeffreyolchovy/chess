@@ -122,4 +122,3 @@ class BoardSuite extends FunSuite
     assert(path == Seq.empty[Board.Point])
   }
 }
-

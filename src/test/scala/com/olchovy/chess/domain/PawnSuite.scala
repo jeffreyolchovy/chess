@@ -6,23 +6,19 @@ class PawnSuite extends FunSuite
 {
   import Piece.Color._
 
-  val whitePiece = Pawn(white)
+  val whitePawn = Pawn(white)
 
-  val blackPiece = Pawn(black)
+  val blackPawn = Pawn(black)
 
-  val whiteObstacle = Rook(white)
+  val whiteRook = Rook(white)
 
-  val blackObstacle = Knight(black)
+  val blackKnight = Knight(black)
 
-  // p @ d7, P @ e2, R @ e6, n @ d3
-  val board = new ChessBoard(
-    Seq.fill(8)(None) ++
-    Seq.fill(3)(None) ++ Seq(Some(blackPiece)) ++ Seq.fill(4)(None) ++
-    Seq.fill(4)(None) ++ Seq(Some(whiteObstacle)) ++ Seq.fill(3)(None) ++
-    Seq.fill(16)(None) ++
-    Seq.fill(3)(None) ++ Seq(Some(blackObstacle)) ++ Seq.fill(4)(None) ++
-    Seq.fill(4)(None) ++ Seq(Some(whitePiece)) ++ Seq.fill(3)(None) ++
-    Seq.fill(8)(None)
+  val board = ChessBoard(
+    ('d', 7) -> blackPawn,
+    ('e', 2) -> whitePawn,
+    ('e', 6) -> whiteRook,
+    ('d', 3) -> blackKnight
   )
 
   test("move pawns forward (1)") {
@@ -47,4 +43,3 @@ class PawnSuite extends FunSuite
     assert(board.move(from = ('e', 2), to = ('f', 2)).isLeft)
   }
 }
-

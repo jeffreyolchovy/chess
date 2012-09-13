@@ -16,7 +16,7 @@ class ChessBoardSuite extends FunSuite
   }
 
   test("white's turn") {
-    val board = new ChessBoard(Seq.fill(64)(None), turn = 0)
+    val board = ChessBoard.empty
     assert(board.player == white)
   }
 
@@ -71,11 +71,11 @@ class ChessBoardSuite extends FunSuite
     assert(result.isLeft)
   }
 
-  /* the remaining tests emply the following flow of movement:
+  /* the remaining tests employ the following flow of movement:
    *
    * 1. create board where black is "losing"
    * 2. move white into position to test for check and checkmate
-   * 3. test is black satisfies test's criteria
+   * 3. test if black satisfies the testing criteria
    */
 
   test("first checkmate with king and queen") {
@@ -130,4 +130,3 @@ class ChessBoardSuite extends FunSuite
     assert(!nextBoard.isInCheckmate)
   }
 }
-
