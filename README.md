@@ -25,3 +25,9 @@ $ ./sbt test
 Examples
 --------
 To see a session that plays "Fool's Mate", issue <code>cat examples/fools_mate.out</code> from the project's root directory.
+
+Rather not check out the repository?
+
+```sh
+wget 'https://raw.github.com/jeffreyolchovy/chess/master/examples/fools_mate.out' -O - | less -r
+```
